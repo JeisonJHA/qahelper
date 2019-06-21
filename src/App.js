@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    window.ipcRenderer.send('getProjects', 'ping');
+    window.ipcRenderer.on('sendProjects', handleProjects);
+
+    return () => {
+      window.ipcRenderer.removeListener('sendProjects', handleProjects);
+    };
+  });
+
+  const handleProjects = (event, data) => {
+    setProjects(data);
+  }
+  // const click = () => {
+  //   window.ipcRenderer.send('getProjects', 'ping')
+  // }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Hello wolrds!</h3>
+      {projects &&
+        <ul>
+          {projects.map(project => (
+            <li>{project.folder}</li>
+          ))}
+        </ul>
+      }
     </div>
   );
 }
