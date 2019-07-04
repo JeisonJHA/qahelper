@@ -1,0 +1,54 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.projects {
+  padding: 5px;
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+  width: 30%;
+  min-width: 300px;
+  justify-items: center;
+  justify-content: center;
+}
+
+div.radiogroup {
+  padding-bottom: 5px;
+  width: 100%;
+  display: flex;
+  height: 37px;
+  justify-content: center;
+}
+
+.radioItem {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.listcontainer {
+  width: 100%;
+  height: 37px;
+  padding-bottom: 5px;
+  display: flex;
+}
+
+ul.treeView {
+  background: white;
+  border-radius: 5px;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.projectitem {
+  border: 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.backButton {
+  position: absolute;
+}
